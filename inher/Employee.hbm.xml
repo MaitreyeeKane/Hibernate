@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 12, 2022 8:13:59 PM by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="in.co.rays.inher.Employee" table="EMPLOYEE"discriminator-value="emp">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="increment" />
+        </id>
+        <discriminator column="type" type="string"></discriminator>  
+<property name="name"></property>  
+            
+<subclass name="in.co.rays.inher.Regular_Employee" discriminator-value="reg_emp">  
+<property name="salary"></property>  
+<property name="bonus"></property>  
+</subclass>  
+            
+<subclass name="in.co.rays.inher.Contract_Employee" discriminator-value="con_emp">  
+<property name="pay_per_hour"></property>  
+<property name="contract_duration"></property>  
+</subclass>  
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+    </class>
+</hibernate-mapping>
